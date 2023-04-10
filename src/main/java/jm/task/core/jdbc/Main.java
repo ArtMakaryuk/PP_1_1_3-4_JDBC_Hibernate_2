@@ -1,34 +1,26 @@
 package jm.task.core.jdbc;
 
-import java.sql.Connection;
-import java.sql.Driver;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import jm.task.core.jdbc.service.UserServiceImpl;
+import jm.task.core.jdbc.util.Util;
+
+import java.sql.*;
 
 public class Main {
 
-    private static final  String URL = "jdbc:mysql://localhost:3306/test";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "root";
-
     public static void main(String[] args) {
+        UserServiceImpl userService = new UserServiceImpl();
 
-        //ДА ЕБАНЫЙ СТЫД СЫЫЫЫЫР
-        Connection connection;
-        try {
-            Driver driver = new com.mysql.cj.jdbc.Driver();
-            DriverManager.registerDriver(driver);
+        userService.createUsersTable();
 
-            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            if (!connection.isClosed()) {
-                System.out.println("Соединение установлено");
-            }
-            connection.close();
-            if (connection.isClosed()) {
-                System.out.println("Соединение закрыто");
-            }
-        } catch (SQLException e) {
-            System.out.println("Не удалось соединиться");
-        }
+        userService.saveUser("Tom", "Felton", (byte) 30);
+        userService.saveUser("John", "Smith", (byte) 21);
+        userService.saveUser("Emily", "InParis", (byte) 55);
+        userService.saveUser("Sam", "Ford", (byte) 1);
+
+        userService.getAllUsers();
+
+        userService.cleanUsersTable();
+
+        userService.dropUsersTable();
     }
 }
