@@ -13,7 +13,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //ДА ЕБАНЫЙ СТЫД
+        //ДА ЕБАНЫЙ СТЫД СЫЫЫЫЫР
         Connection connection;
         try {
             Driver driver = new com.mysql.cj.jdbc.Driver();
