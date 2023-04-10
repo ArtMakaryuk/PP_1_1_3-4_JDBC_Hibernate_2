@@ -12,6 +12,8 @@ public class Main {
     private static final String PASSWORD = "root";
 
     public static void main(String[] args) {
+
+        //ДА ЕБАНЫЙ СТЫД
         Connection connection;
         try {
             Driver driver = new com.mysql.cj.jdbc.Driver();
