@@ -18,11 +18,12 @@ public class Util {
             String login = properties.getProperty("db.username");
             String password = properties.getProperty("db.password");
             try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
                 connection = DriverManager.getConnection(url, login, password);
                 if (connection != null) {
                     System.out.println("Connection successful");
                 }
-            } catch (SQLException e) {
+            } catch (ClassNotFoundException | SQLException e) {
                 e.printStackTrace();
                 System.out.println("Connection's not established");
             }
